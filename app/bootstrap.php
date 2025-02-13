@@ -1,6 +1,5 @@
 <?php
 
-use Eca\Helper\Services\RedisLog;
 use Illuminate\Http\JsonResponse;
 use JetBrains\PhpStorm\NoReturn;
 
