@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "cc4db1c3-5b45-49f0-9fc9-cdf572452c97",
+		"name": "user",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "5525332"
+	},
+	"item": [
+		{
+			"name": "register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"try{",
+							"    pm.environment.set(\"token\", pm.response.json().data.token);",
+							"}catch(error){",
+							"    console.log(error)",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"hossein\",\n    \"username\": \"h.rad193122\",\n    \"mobile\": \"09353678878\",\n    \"national_id\": \"1810441497\",\n    \"password\": \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/register",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"try{",
+							"    pm.environment.set(\"token\", pm.response.json().data.token);",
+							"}catch(error){",
+							"    console.log(error)",
+							"}"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"mobile\": \"09353678848\",\n    \"password\": \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{api}}/login",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "all users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/all-users?page=1&per_page=25&direction=desc&order_by=id",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"all-users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "per_page",
+							"value": "25"
+						},
+						{
+							"key": "direction",
+							"value": "desc"
+						},
+						{
+							"key": "order_by",
+							"value": "id"
+						},
+						{
+							"key": "search",
+							"value": "hossein",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "hossein",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "mobile",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "national_id",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "me",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/me",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "send notification",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{api}}/send-notification/:user?message=خوبی",
+					"host": [
+						"{{api}}"
+					],
+					"path": [
+						"send-notification",
+						":user"
+					],
+					"query": [
+						{
+							"key": "message",
+							"value": "خوبی"
+						}
+					],
+					"variable": [
+						{
+							"key": "user",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
