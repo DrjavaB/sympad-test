@@ -4,9 +4,9 @@ namespace App\Services;
 
 use Log;
 
-class SMS
+class NotificationService
 {
-    public function send(string $message, string $mobile): void
+    public static function send(string $message, string $mobile): void
     {
         // Send SMS
         Log::info('SMS sent to ' . $mobile);

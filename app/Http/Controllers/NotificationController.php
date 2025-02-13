@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\UserRegistered;
+use App\Jobs\CustomNotification;
 use App\Models\User;
 use Illuminate\Http\Request;
 use JetBrains\PhpStorm\NoReturn;
 
+
 class NotificationController extends Controller
 {
-
-    #[NoReturn] public function sendNotification(User $user)
+    #[NoReturn] public function sendNotification(Request $request,User $user)
     {
-        UserRegistered::dispatch($user)->onQueue('notification');
-        return successResponse(null, 'notification sent successfully');
+        CustomNotification::dispatch($request->message, $user)->onQueue('notification');
+        return successResponse(null, 'نوتیفیکشن برای کاربر ارسال شد');
     }
 }
