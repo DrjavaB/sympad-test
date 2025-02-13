@@ -10,3 +10,4 @@ Route::get('/all-users', [UserController::class, 'allUsers']);
 Route::middleware('auth:api')->get('/me', [UserController::class, 'me']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
+Route::get('/send-notification/{user}', [NotificationController::class, 'sendNotification']);
